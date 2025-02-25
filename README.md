@@ -3,6 +3,7 @@
 ## Prerequisite
 Java version 17 to build project
 
+## Description
 [![Build Status](https://travis-ci.org/RADAR-base/radar-commons-android.svg?branch=master)](https://travis-ci.org/RADAR-base/radar-commons-android)
 
 Base module for the RADAR passive remote monitoring app. Plugins for that app should implement the API from this base library. Also user interfaces should use this as a base. Currently, the main user interface is [RADAR-AndroidApplication](https://github.com/RADAR-base/radar-prmt-android.git).
