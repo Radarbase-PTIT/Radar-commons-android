@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Uses system permission. -->
+    <uses-permission tools:ignore="ProtectedPermissions"
+        android:name="android.permission.PACKAGE_USAGE_STATS"/>
+
+    <application android:allowBackup="true">
+        <service android:name=".PhoneUsageService"
+            android:exported="false"
+            android:description="@string/phone_usage_description" />
+    </application>
+</manifest>

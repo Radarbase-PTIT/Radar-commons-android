@@ -1,0 +1,20 @@
+apply from: "$rootDir/gradle/android.gradle"
+
+android {
+    namespace "org.radarbase.passive.phone.telephony"
+}
+
+//---------------------------------------------------------------------------//
+// Configuration                                                             //
+//---------------------------------------------------------------------------//
+
+description = 'Telephony plugin for RADAR passive remote monitoring app'
+
+//---------------------------------------------------------------------------//
+// Sources and classpath configurations                                      //
+//---------------------------------------------------------------------------//
+dependencies {
+    api project(':radar-commons-android')
+}
+
+apply from: "$rootDir/gradle/publishing.gradle"

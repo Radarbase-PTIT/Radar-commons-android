@@ -1,0 +1,23 @@
+apply from: "$rootDir/gradle/android.gradle"
+
+android {
+    namespace "org.radarbase.passive.phone"
+}
+
+//---------------------------------------------------------------------------//
+// Configuration                                                             //
+//---------------------------------------------------------------------------//
+
+description = "Basic phone sensor plugin for RADAR passive remote monitoring app"
+
+//---------------------------------------------------------------------------//
+// Sources and classpath configurations                                      //
+//---------------------------------------------------------------------------//
+
+dependencies {
+    api project(":radar-commons-android")
+    api project(path: ":radar-android-google-places")
+    implementation "androidx.localbroadcastmanager:localbroadcastmanager:$localbroadcastmanager_version"
+}
+
+apply from: "$rootDir/gradle/publishing.gradle"

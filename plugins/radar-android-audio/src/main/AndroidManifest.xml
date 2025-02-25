@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Audio recording -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-feature android:name="android.hardware.microphone" android:required="false"/>
+
+    <application>
+        <service android:name=".OpenSmileAudioService"
+            android:foregroundServiceType="microphone"
+            android:exported="false"
+            android:description="@string/audio_description" />
+    </application>
+</manifest>

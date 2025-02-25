@@ -1,0 +1,17 @@
+apply from: "$rootDir/gradle/android.gradle"
+
+android {
+    namespace "org.radarbase.passive.weather"
+}
+
+//---------------------------------------------------------------------------//
+// Configuration                                                             //
+//---------------------------------------------------------------------------//
+
+description = 'Plugin for pRMT that queries Weather API'
+
+dependencies {
+    api project(':radar-commons-android')
+}
+
+apply from: "$rootDir/gradle/publishing.gradle"

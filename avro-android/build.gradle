@@ -1,0 +1,19 @@
+apply from: "$rootDir/gradle/android.gradle"
+
+android {
+    namespace "org.radarbase.android.avro"
+}
+
+description = "Version of Apache Avro compatible with Android"
+
+dependencies {
+    implementation("org.slf4j:slf4j-api:$slf4j_api_version")
+
+    testImplementation(project(":radar-commons-android")) {
+        exclude group: 'org.apache.avro', module: 'avro'
+        exclude group: 'com.gitlab.mvysny.slf4j', module: 'slf4j-handroid'
+    }
+}
+
+apply from: "$rootDir/gradle/publishing.gradle"
+apply from: "$rootDir/gradle/test.gradle"

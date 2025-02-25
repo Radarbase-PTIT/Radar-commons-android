@@ -1,0 +1,96 @@
+apply plugin: "de.mobilej.unmock"
+
+android {
+    defaultConfig.testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    useLibrary "android.test.runner"
+    useLibrary "android.test.base"
+    useLibrary "android.test.mock"
+}
+
+dependencies {
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "org.slf4j:slf4j-simple:$slf4j_api_version"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_version"
+
+    // Core library
+    androidTestImplementation "androidx.test:core:$androidx_core_version"
+
+    // AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation "androidx.test:runner:$runner_version"
+    androidTestImplementation "androidx.test:rules:$androidx_runner_version"
+
+    // Assertions
+    androidTestImplementation "androidx.test.ext:junit:$androidx_ext_junit_version"
+    androidTestImplementation "androidx.test.ext:truth:$androidx_ext_truth_version"
+    androidTestImplementation "com.google.truth:truth:$truth_version"
+
+    // Espresso dependencies
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$androidx_espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$androidx_espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-accessibility:$androidx_espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-web:$androidx_espresso_version"
+    androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:$androidx_espresso_version"
+
+    // The following Espresso dependency can be either "implementation"
+    // or "androidTestImplementation", depending on whether you want the
+    // dependency to appear on your APK"s compile classpath or the test APK
+    // classpath.
+    androidTestImplementation "androidx.test.espresso:espresso-idling-resource:$androidx_espresso_version"
+
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_espresso_version"
+
+    unmock "org.robolectric:android-all:5.0.2_r3-robolectric-r0"
+}
+
+unMock {
+    keep "android.widget.BaseAdapter"
+    keep "android.widget.ArrayAdapter"
+    keep "android.os.Bundle"
+    keep "android.os.Parcelable"
+    keepStartingWith "android.database.MatrixCursor"
+    keep "android.database.AbstractCursor"
+    keep "android.database.CrossProcessCursor"
+    keepStartingWith "android.text.TextUtils"
+    keepStartingWith "android.util."
+    keepStartingWith "android.text."
+    keepStartingWith "android.security.keystore."
+    keep "android.app.Application"
+    keep "android.content.Context"
+    keep "android.app.ContextImpl"
+    keep "android.os.UserHandle"
+    keep "android.R"
+    keepStartingWith "android.os.Build"
+    keepStartingWith "android.content.ComponentCallbacks"
+    keep "android.content.ContextWrapper"
+    keepStartingWith "android.content.ContentValues"
+    keepStartingWith "android.content.ComponentName"
+    keepStartingWith "android.content.ContentUris"
+    keepStartingWith "android.content.ContentProviderOperation"
+    keepStartingWith "android.content.ContentProviderResult"
+    keepStartingWith "android.content.UriMatcher"
+    keepStartingWith "android.content.Intent"
+    keep "android.location.Location"
+    keepStartingWith "android.content.res.Configuration"
+    keepStartingWith "org."
+    keepStartingWith "libcore."
+    keepStartingWith "com.android.internal.R"
+    keepStartingWith "com.android.internal.util."
+    keep "android.net.Uri"
+    keepStartingWith "org.json."
+    keep "android.os.SystemClock"
+    keep "android.os.RemoteException"
+    keep "android.os.HandlerThread"
+    keep "android.os.Handler"
+    keep "android.os.IMessenger"
+    keep "android.os.Process"
+    keep "android.os.Looper"
+    keep "android.os.ZygoteStartFailedEx"
+    keep "android.system.Os"
+    keep "android.os.Binder"
+    keep "android.os.MessageQueue"
+    keep "android.os.Message"
+
+    keepAndRename "java.nio.charset.Charsets" to "xjava.nio.charset.Charsets"
+}
