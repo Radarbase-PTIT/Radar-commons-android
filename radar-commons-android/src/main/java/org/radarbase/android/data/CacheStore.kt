@@ -43,12 +43,24 @@ class CacheStore(
     private val handler = SafeHandler.getInstance("DataCache", THREAD_PRIORITY_BACKGROUND)
 
     init {
+//        logger.debug("Serialization factories" + serializationFactories)
         require(serializationFactories.isNotEmpty()) { "Need to specify at least one serialization method" }
-        if (BuildConfig.DEBUG) {
-            check(serializationFactories.none { s1 ->
-                serializationFactories.any { s2 -> s1.fileExtension.endsWith(s2.fileExtension, ignoreCase = true) }
-            }) { "Serialization factories cannot have overlapping extensions, to avoid the wrong deserialization method being chosen."}
-        }
+//        if (BuildConfig.DEBUG) {
+//            serializationFactories.forEachIndexed { index, s1 ->
+//                // Log the file extension of the current SerializationFactory (s1)
+//                logger.debug("Checking factory $index with extension: ${s1.fileExtension}")
+//
+//                // Now log the comparison between s1 and every other factory (s2)
+//                serializationFactories.forEachIndexed { innerIndex, s2 ->
+//                    logger.debug("s1" + s1)
+//                    logger.debug("s2" + s2)
+//                    logger.debug("Conflict found: ${s1.fileExtension} ends with ${s2.fileExtension}")
+//                }
+//            }
+//            check(serializationFactories.none { s1 ->
+//                serializationFactories.any { s2 -> s1.fileExtension.endsWith(s2.fileExtension, ignoreCase = true) }
+//            }) { "Serialization factories cannot have overlapping extensions, to avoid the wrong deserialization method being chosen."}
+//        }
         handler.start()
     }
 

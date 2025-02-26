@@ -135,12 +135,14 @@ class ManagementPortalClient constructor(
             val refreshToken = requireNotNull(authState.getAttribute(MP_REFRESH_TOKEN_PROPERTY)) {
                 "No refresh token found"
             }
+            println("Refresh token" + refreshToken)
 
             val body = FormBody.Builder()
                     .add("grant_type", "refresh_token")
                     .add("refresh_token", refreshToken)
+                    .add("client_id", "pRMT")
+                    .add("client_secret", "saturday\$SHARE\$scale")
                     .build()
-            println("Hahahaa")
 
             val request = client.requestBuilder("oauth/token")
                     .post(body)
