@@ -1,5 +1,9 @@
 # RADAR-Commons-Android
 
+## Note
+In case build project failed due to unallocated Android.mk file, go to root folder (contains `settings.gradle`) 
+and run ./gradlew clean; then rebuild the project
+
 ## Prerequisite
 Java version 17 to build project
 
