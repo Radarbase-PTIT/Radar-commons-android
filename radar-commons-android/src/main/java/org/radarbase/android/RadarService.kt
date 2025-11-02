@@ -635,6 +635,7 @@ abstract class RadarService : LifecycleService(), ServerStatusListener, LoginLis
             mHandler,
             providers
         ) { unregisteredProviders, registeredProviders ->
+            logger.info("=================")
             logger.info(
                 "Registered providers: {}, unregistered providers: {}",
                 registeredProviders.map { it.pluginName },

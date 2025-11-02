@@ -1,5 +1,6 @@
 package org.radarbase.android.source
 
+import android.util.Log
 import org.radarbase.android.auth.*
 import org.radarbase.android.auth.AuthService.Companion.RETRY_MAX_DELAY
 import org.radarbase.android.auth.AuthService.Companion.RETRY_MIN_DELAY
@@ -46,6 +47,16 @@ class SourceProviderRegistrar(
         if (isClosed) {
             return
         }
+
+        //Debugging
+        Log.d("AuthState", "AuthState: $authState")
+
+        // Print each source type in authState
+        Log.d("AuthState", "Source Types:")
+        authState.sourceTypes.forEachIndexed { index, sourceType ->
+            Log.d("AuthState", "Source Type $index: $sourceType")
+        }
+        //End debugging
         val sourceType = authState.sourceTypes.first { provider.matches(it, false) }
         authServiceBinder.registerSource(SourceMetadata(sourceType), { _, _ ->
             retry -= provider
