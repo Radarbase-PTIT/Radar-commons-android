@@ -5,7 +5,9 @@ In case build project failed due to unallocated Android.mk file, go to root fold
 and run `./gradlew clean`; then rebuild the project
 
 ## Prerequisite
-Java version 17 to build project
+Java version 17 to build project, check gradle JVM version by running command
+`./gradlew -v`
+If JVM version is <11, recommend is 17, then must point gradle JVM version to 17 by clearing gradle cache.
 
 ## Description
 [![Build Status](https://travis-ci.org/RADAR-base/radar-commons-android.svg?branch=master)](https://travis-ci.org/RADAR-base/radar-commons-android)
