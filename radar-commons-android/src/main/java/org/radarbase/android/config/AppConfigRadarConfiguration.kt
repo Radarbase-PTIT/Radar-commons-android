@@ -156,6 +156,7 @@ class AppConfigRadarConfiguration(context: Context) : RemoteConfig {
     @Synchronized
     private fun updateConfiguration(auth: AppAuthState?, config: SingleRadarConfiguration?) {
         val appConfig = config?.let { value ->
+            logger.debug("+===================KSKSKS=================")
             val serverConfig = value.optString(BASE_URL_KEY) { baseUrl ->
                 "$baseUrl/appconfig/api/".toServerConfig(
                     isUnsafe = value.getBoolean(UNSAFE_KAFKA_CONNECTION, false),

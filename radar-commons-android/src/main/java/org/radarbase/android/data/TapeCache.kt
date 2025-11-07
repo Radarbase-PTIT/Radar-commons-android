@@ -184,7 +184,7 @@ constructor(
 
         handler.execute {
             measurementsToAdd += record
-
+            logger.debug("====== MEASURE =====" + measurementsToAdd.size);
             if (addMeasurementFuture == null) {
                 addMeasurementFuture = handler.delay(config.commitRate, ::doFlush)
             }

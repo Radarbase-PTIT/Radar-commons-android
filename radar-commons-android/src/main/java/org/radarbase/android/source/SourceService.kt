@@ -45,6 +45,7 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashSet
+import kotlin.math.log
 
 /**
  * A service that manages a SourceManager and a TableDataHandler to send addToPreferences the data of a
@@ -415,6 +416,18 @@ abstract class SourceService<T : BaseSourceState> : LifecycleService(), SourceSt
                     registrationFuture = null
                     ensureRegistration(id, name, attributes, onMapping)
 
+                }
+            }
+
+            logger.debug("====== ID =====" + id)
+            logger.debug("====== Name =====" + name)
+            acceptableSources.forEach { source ->
+                // source is the element in the list (you can name it anything, like 'it' or 'source')
+                logger.debug("======SOURCES==== ${source.sourceId}")
+                logger.debug("======SOURCES==== ${source.sourceName}")
+                for ((key, value) in source.attributes) {
+                    logger.debug("===== KEY =====" + key);
+                    logger.debug("===== VALUE ====" + value);
                 }
             }
 

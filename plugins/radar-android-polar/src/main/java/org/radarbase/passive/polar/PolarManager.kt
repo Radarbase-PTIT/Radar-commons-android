@@ -67,7 +67,6 @@ class PolarManager(
 
         connectToPolarSDK()
 
-        register()
         mHandler.start()
         mHandler.execute {
             wakeLock = (service.getSystemService(POWER_SERVICE) as PowerManager?)?.let { pm ->
@@ -108,6 +107,7 @@ class PolarManager(
                 service.savePolarDevice(polarDeviceInfo.deviceId)
                 deviceId = polarDeviceInfo.deviceId
                 name = polarDeviceInfo.name
+                register(deviceId, name)
 
                 if (deviceId != null) {
                     isDeviceConnected = true
@@ -353,17 +353,14 @@ class PolarManager(
                                         PolarUtils.convertEpochPolarToUnixEpoch(data.timeStamp)
                                     } currentTime: $currentTime PolarTimeStamp: ${data.timeStamp}"
                                 )
-                                mHandler.execute {
-                                    send(
-                                        ecgTopic,
-                                        PolarEcg(
-                                            name,
-                                            PolarUtils.convertEpochPolarToUnixEpoch(data.timeStamp),
-                                            currentTime,
-                                            data.voltage
+                                send(ecgTopic,
+                                    PolarEcg(
+                                        name,
+                                        PolarUtils.convertEpochPolarToUnixEpoch(data.timeStamp),
+                                        currentTime,
+                                        data.voltage
                                         )
                                     )
-                                }
                             }
                         },
                         { error: Throwable ->
