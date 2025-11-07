@@ -419,18 +419,6 @@ abstract class SourceService<T : BaseSourceState> : LifecycleService(), SourceSt
                 }
             }
 
-            logger.debug("====== ID =====" + id)
-            logger.debug("====== Name =====" + name)
-            acceptableSources.forEach { source ->
-                // source is the element in the list (you can name it anything, like 'it' or 'source')
-                logger.debug("======SOURCES==== ${source.sourceId}")
-                logger.debug("======SOURCES==== ${source.sourceName}")
-                for ((key, value) in source.attributes) {
-                    logger.debug("===== KEY =====" + key);
-                    logger.debug("===== VALUE ====" + value);
-                }
-            }
-
             val matchingSource = acceptableSources
                     .find { source ->
                         val physicalId = source.attributes["physicalId"]?.takeIf { it.isNotEmpty() }

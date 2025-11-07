@@ -147,9 +147,6 @@ abstract class AbstractSourceManager<S : SourceService<T>, T : BaseSourceState>(
      */
     protected fun <V : SpecificRecord> send(dataCache: DataCache<ObservationKey, V>, value: V) {
         val key = state.id
-        logger.debug("======Key: " + key.sourceId)
-        logger.debug("======User:" + key.userId)
-        logger.debug("======Project:" + key.projectId)
 
         if (key.getSourceId() != null) {
             try {
